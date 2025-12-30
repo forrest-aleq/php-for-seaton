@@ -1,0 +1,46 @@
+# Pre-commit hooks for PHP
+# Install: pip install pre-commit && pre-commit install
+
+repos:
+  # Guardian - custom checks
+  - repo: local
+    hooks:
+      - id: guardian
+        name: Guardian
+        entry: php scripts/guardian.php
+        language: system
+        pass_filenames: false
+        always_run: true
+
+      - id: phpstan
+        name: PHPStan
+        entry: vendor/bin/phpstan analyse --memory-limit=512M
+        language: system
+        types: [php]
+        pass_filenames: false
+
+      - id: php-cs-fixer
+        name: PHP CS Fixer
+        entry: vendor/bin/php-cs-fixer fix --dry-run --diff
+        language: system
+        types: [php]
+        pass_filenames: false
+
+      - id: php-syntax
+        name: PHP Syntax
+        entry: php -l
+        language: system
+        types: [php]
+
+  # Basic hygiene
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-added-large-files
+        args: ['--maxkb=500']
+      - id: check-merge-conflict
+      - id: detect-private-key

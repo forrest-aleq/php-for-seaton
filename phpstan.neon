@@ -1,0 +1,33 @@
+# PHPStan - Static analysis for PHP
+# Level 8 is strict but catches real bugs
+
+parameters:
+    level: 8
+
+    paths:
+        - src
+        - app
+
+    excludePaths:
+        - vendor
+        - tests
+        - storage
+        - cache
+
+    # Catch real bugs
+    checkMissingIterableValueType: true
+    checkGenericClassInNonGenericObjectType: true
+    reportUnmatchedIgnoredErrors: true
+
+    # These catch actual issues
+    checkAlwaysTrueCheckTypeFunctionCall: true
+    checkAlwaysTrueInstanceof: true
+    checkAlwaysTrueStrictComparison: true
+    checkExplicitMixedMissingReturn: true
+    checkFunctionNameCase: true
+    checkInternalClassCaseSensitivity: true
+    checkTooWideReturnTypesInProtectedAndPublicMethods: true
+
+    # Ignore vendor stubs issues
+    ignoreErrors:
+        - '#Parameter .* of class .* constructor expects .*, .* given#'

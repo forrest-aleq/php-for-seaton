@@ -1,0 +1,62 @@
+{
+  "srcDirs": ["src", "app"],
+  "exclude": ["vendor", "tests", "storage", "cache", "node_modules"],
+
+  "limits": {
+    "maxFileLines": 500,
+    "maxFunctionLines": 50
+  },
+
+  "quality": {
+    "banVarDump": true,
+    "banPrintR": true,
+    "banDie": true,
+    "banExit": true,
+    "banTodo": true,
+    "banMockData": true,
+    "mockPatterns": [
+      "mock_", "_mock", "fake_", "_fake", "dummy_", "_dummy",
+      "test_user", "test_email", "test_password",
+      "example@", "@example.com", "@test.com",
+      "placeholder", "sample_", "hardcoded",
+      "changeme", "replace_me", "your_",
+      "lorem ipsum", "foo_bar", "asdf", "xxx"
+    ]
+  },
+
+  "security": {
+    "banEval": true,
+    "banExec": true,
+    "banShellExec": true,
+    "banSystem": true,
+    "banPassthru": true,
+    "banRawSuperGlobals": true,
+    "banDeprecatedMysql": true,
+    "checkSqlInjection": true,
+    "checkXss": true,
+
+    "banUnserialize": true,
+    "banIncludeVariable": true,
+    "banFileGetContentsUrl": true,
+    "banExtract": true,
+    "banAssert": true,
+    "banWeakRandom": true,
+    "banMd5Password": true,
+    "banBase64Secrets": true,
+    "checkPathTraversal": true,
+    "checkOpenRedirect": true,
+    "checkHardcodedSecrets": true,
+    "checkPromptInjection": true,
+
+    "banCompareTokensLoose": true,
+    "banSessionWithoutRegenerate": true,
+    "checkFileUpload": true,
+    "banErrorDisplay": true,
+    "banDebugMode": true
+  },
+
+  "database": {
+    "requirePreparedStatements": true,
+    "allowedDrivers": ["pdo"]
+  }
+}
